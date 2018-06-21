@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Flexbox Navbar</title>
+    <style>
+
+      * {
+
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 1rem;
+      }
+
+      .navbar {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-image: linear-gradient(135deg, #2376ae 0%, #c16ecf 100%); 
+        border: 1px solid rgba(0,0,0,0.2);
+        color: rgba(255,255,255,0.7);
+      }
+
+      .navbar a:link, .navbar a:visited {
+
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .navbar a:hover, .navbar a:active {
+
+        color: rgba(255,255,255,1);
+      }
+
+      .navbar__links {
+
+        list-style-type: none;
+        display: none;
+        flex: 0 0 100%;
+        flex-direction: column;
+      }
+
+        .navbar__links.navbar--active {
+          
+          display: flex;
+        }
+
+        .navbar__item {
+
+          flex: 1 1 100%;
+          text-align: center;
+        }
+
+        .navbar__link {
+
+          display: inline-block;
+          width: 100%;
+          padding: 15px;
+        }
+
+      .navbar__toggle {
+
+        cursor: pointer;
+        background-color: transparent;
+        color: inherit;
+        border-width: 0;
+        padding: 0;
+        font-size: 1rem;
+      }
+
+      @media screen and (min-width: 768px){
+
+        .navbar__links {
+
+          display: flex;
+          flex: 0 0 auto;
+          flex-direction: row;
+          justify-content: flex-end;
+        }
+
+        .navbar__link {
+
+          padding: 0;
+        }
+
+        .navbar__item {
+
+          flex: 1 1 auto;
+          margin: auto auto auto 20px;
+        }
+
+        .navbar__toggle {
+
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar__logo">logo</a>
+      <button type="button" class="navbar__toggle">Menu</button>
+      <ul class="navbar__links">
+        <li class="navbar__item"><a href="#home" class="navbar__link">Home</a></li>
+        <li class="navbar__item"><a href="#products" class="navbar__link">Products</a></li>
+        <li class="navbar__item"><a href="#about" class="navbar__link">About Us</a></li>
+        <li class="navbar__item"><a href="#contact" class="navbar__link">Contact Us</a></li>
+        <li class="navbar__item"><a href="#blog" class="navbar__link">Blog</a></li>
+      </ul>
+    </nav>
+    <script>
+
+      let navbar_el = document.querySelector('.navbar__links');
+      let navbarToggleButton_el = document.querySelector('.navbar__toggle');
+      navbarToggleButton_el.addEventListener('click', function(){
+
+        if ( this.classList.contains('navbar--active') ){
+
+          navbar_el.classList.remove('navbar--active');
+          this.classList.remove('navbar--active');
+        } else {
+
+          navbar_el.classList.add('navbar--active');
+          this.classList.add('navbar--active');
+        }
+      });
+    </script>
+  </body>
+</html>
