@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fetch API</title>
+  </head>
+  <body>
+    <button id="getData">GET DATA FROM LOCAL</button>
+    <button id="getAPI">GET DATA FROM API</button>
+    <div id="result"></div>
+    <hr />
+    <form id="postData">
+      <p>
+        <input type="text" name="postTitle" id="postTitle">
+      </p>
+      <p>
+        <textarea name="postBody" id="postBody" cols="20" rows="5"></textarea>
+      </p>
+      <p>
+        <input type="submit" value="Send">
+      </p>
+    </form>
+    <script>
+      
+      document.getElementById('getData').addEventListener('click', getData);
+      document.getElementById('getAPI').addEventListener('click', getAPI);
+      document.getElementById('postData').addEventListener('submit', postForm);
+      
+      function getData(){
+
+        fetch('sampleUsers.json')
+          .then( (res) => {
+            return res.json();
+          })
+          .then( (data) => {
+            handleUsersPopulation(data);
+          })
+          .catch( (error) => {
+            console.error( error );
+            document.getElementById('result').innerHTML = `There was an issue loading the users.`
+          });
+      }
+
+      function getAPI(){
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+          .then( (res) => {
+            return res.json();
+          })
+          .then( (data) => {
+            handleUsersPopulation(data);
+          })
+          .catch( (error) => {
+            console.error( error );
+            document.getElementById('result').innerHTML = `There was an issue loading the users.`
+          });
+      }
+
+      function handleUsersPopulation( data ){
+
+        let result = `<h2>Users</h2><ul>`;
+        data.forEach( (user) => {
+          let { id, name, email } = user;
+          result += `<li>ID: ${id} &mdash; ${name} (${email})</li>`;
+        });
+        result += '</ul>';
+        document.getElementById('result').innerHTML = result;
+      }
+
+      function postForm(event){
+        event.preventDefault();
+        
+        let postTitle = document.getElementById('postTitle').value;
+        let postBody = document.getElementById('postBody').value;
+        
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          },
+          body: JSON.stringify({ 
+            title: postTitle, 
+            body: postBody 
+          })
+        })
+          .then( (res) => {
+            return res.json()
+          })
+          .then( (data) => {
+            console.log(data)
+          })
+          .catch( (err) => {
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>

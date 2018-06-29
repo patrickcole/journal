@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Destructuring in JavaScript</title>
+  </head>
+  <body>
+    <script>
+      
+      let obj = { name: 'Patrick', show: true };
+      let {name, show} = obj;
+      console.log(`My name is ${name}.`);
+      console.log(`The visibility status is ${show}.`);
+
+      let arr = ['Sai', 'India', '2018', 'JavaScript'];
+      let [arrName, arrCountry, arrYear, arrLang] = arr;
+
+      console.log(arrName);
+      console.log(arrCountry);
+      console.log(arrYear);
+      console.log(arrLang);
+
+      let user = {
+        name: 'sai',
+        show: {
+          items: 20,
+          hide: false
+        },
+        lang: 'JavaScript'
+      };
+
+      let {show: {items, hide}} = user;
+
+      console.log( items );
+      console.log( hide );
+    </script>
+  </body>
+</html>
