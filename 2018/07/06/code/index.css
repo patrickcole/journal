@@ -1,18 +1,21 @@
-@keyframes flyIn {
-  from {
-    opacity: 0;
-    transform: translateY(300%) scale(0);
-  }
-}
-
-@keyframes rotate {
-  to {
-    transform: rotate(45deg);
-  }
-}
-
 div {
-  animation: 
-    flyIn .5s forwards,
-    rotate .5s .3s forwards;
+  animation: dynamicScale .5s cubic-bezier(1,.2,.6,1.75) 1s forwards;
+}
+
+div:nth-of-type(1){
+  --scale: 1.2;
+}
+
+div:nth-of-type(2){
+  --scale: 2.6;
+}
+
+div:nth-of-type(3){
+  --scale: 1.8;
+}
+
+@keyframes dynamicScale {
+  to {
+    transform: scale(var(--scale));
+  }
 }
