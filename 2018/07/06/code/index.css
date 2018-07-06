@@ -4,7 +4,22 @@
   }
 }
 
+@keyframes squarePath {
+  0%, 100% {
+    transform: translate(-100%, -100%);
+  }
+  25% {
+    transform: translate(100%, -100%);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(-100%, 100%);
+  }
+}
+
 div {
-  animation-name: spin;
+  animation-name: squarePath;
   animation-duration: 2s;
 }
