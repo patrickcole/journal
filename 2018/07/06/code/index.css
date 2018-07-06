@@ -20,6 +20,13 @@
 }
 
 div {
-  animation-name: squarePath;
+  animation-name: spin;
   animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+}
+
+:checked ~ div {
+  animation-play-state: running;
 }
