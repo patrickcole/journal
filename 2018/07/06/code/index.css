@@ -21,12 +21,18 @@
 
 div {
   animation-name: spin;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-play-state: paused;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
-:checked ~ div {
-  animation-play-state: running;
+div:nth-of-type(1){
+  animation-delay: 0s;
+}
+
+div:nth-of-type(2){
+  animation-delay: .5s;
+}
+
+div:nth-of-type(3){
+  animation-delay: 1s;
 }
