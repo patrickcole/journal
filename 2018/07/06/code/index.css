@@ -1,11 +1,22 @@
-div {
-  --scale: 1.5;
-  animation: change 1s infinite cubic-bezier(.35,.71,.71,.35) 1s;
-  transform: scale(var(--scale));
+.wrapper {
+  animation: x 2s ease-in-out infinite 1s both;
 }
 
-@keyframes change {
+.wrapper > div {
+  animation: y 2s ease-in-out infinite 1s both;
+}
+
+@keyframes x {
+  0% {
+    transform: translate(-25vw, 0);
+  }
+  100% {
+    transform: translate(25vw, 0);
+  }
+}
+
+@keyframes y {
   50% {
-    transform: scale(1);
+    transform: translate(0, -20vh);
   }
 }
