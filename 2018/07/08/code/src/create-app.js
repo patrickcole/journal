@@ -1,9 +1,15 @@
 import Vue from "vue";
-import Hello from "./Hello.vue";
+import App from "./Hello.vue";
+import { createStore } from "./store";
 
 export function createApp() {
-  return new Vue({
-    el: "#app",
-    render: h => h(Hello)
-  })
+
+  const store = createStore();
+  const app = new Vue({
+    el: '#app',
+    store,
+    render: h => h(App)
+  });
+
+  return { app, store, App }
 }
