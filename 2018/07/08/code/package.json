@@ -1,16 +1,19 @@
 {
   "scripts": {
-    "build": "npx webpack",
-    "dev": "npx webpack-dev-server --mode development"
+    "build": "npx webpack --env production",
+    "dev": "npx webpack-dev-server --env development"
   },
   "devDependencies": {
+    "express": "^4.16.3",
     "html-webpack-plugin": "^3.2.0",
     "vue": "^2.5.16",
     "vue-loader": "^15.2.4",
+    "vue-server-renderer": "^2.5.16",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
   },
   "dependencies": {
     "npm": "^6.1.0"
