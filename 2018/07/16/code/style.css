@@ -1,0 +1,45 @@
+body {
+  background-color: #FEFEFE;
+}
+
+.card {
+
+  display: flex;
+  height: 140px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-family: Helvetica;
+  border-bottom: 3px solid #ccc;
+}
+
+  .card:hover, .card:focus {
+
+    cursor: pointer;
+    border-bottom-color: #41377C;
+  }
+
+.card__image {
+
+  flex: 0 0 100px;
+  margin-right: 10px;
+}
+
+.card__content {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex: 1 1 auto;
+  height: 140px;
+}
+
+  .card__content * {
+
+    flex: 1 1 auto;
+    margin: 0;
+  }
+
+.card__stars--active {    color: #41377C; }
+.card__stars--inactive {  color: #ccc; }
