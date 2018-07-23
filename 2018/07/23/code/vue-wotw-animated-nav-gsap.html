@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue - Widget of the Week - Animated Navigation</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+      
+      .btn-container {
+        display: flex;
+        background-color: black;
+        padding-top: 150px;
+        padding-bottom: 150px;
+        justify-content: center;
+      }
+
+      .btn {
+        display: inline-block;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 25px;
+        color: grey;
+        border-radius: 25px;
+        background-color: white;
+        text-align: center;
+        line-height: 50px;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="btn-container" :style=" { 'backgroundColor': selectedBgColor } ">
+        <div v-for="(button, index) in buttons" :key="index" @click="selectButton(index)" :ref="`button_${index}`" class="btn">
+          <i :class="['fas', `fa-${button.icon}`]"></i>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          buttons: [
+            { icon: 'comment', bgColor: '#DE9B00', color: '#EDB205' },
+            { icon: 'user', bgColor: '#3EAF6F', color: '#4BD389' },
+            { icon: 'map-marker', bgColor: '#BE0031', color: '#E61753' },
+            { icon: 'cog', bgColor: '#8E00AC', color: '#B32DD2' }
+          ],
+          selectedBgColor: '#DE9B00',
+          selectedId: 0
+        },
+        methods: {
+          selectButton(id) {
+
+            const previousButton = this.$refs[`button_${this.selectedId}`];
+            const nextButton = this.$refs[`button_${id}`];
+
+            this.selectedId = id;
+            this.animateBgColor();
+
+            this.animateOut(previousButton);
+            this.animateIn(nextButton);
+          },
+          animateBgColor(){
+            
+            TweenMax.to(this, 0.2, {
+              selectedBgColor: this.selectedButton.bgColor
+            });
+          },
+          animateIn(btn) {
+
+            // adjust the colors of both the icon and background of button:
+            TweenMax.to(btn, 0.3, {
+              backgroundColor: this.selectedButton.color,
+              color: 'white'
+            });
+
+            // animate the width of the button:
+            TweenMax.to(btn, 0.7, {
+              width: 100,
+              ease: Elastic.easeOut.config(1, 0.5)
+            });
+          },
+          animateOut(btn) {
+
+            // transition colors back to defaults:
+            TweenMax.to(btn, 0.3, {
+              backgroundColor: 'white',
+              color: 'gray'
+            });
+
+            // adjust the width back to default:
+            TweenMax.to(btn, 0.7, {
+              width: 50,
+              ease: Elastic.easeOut.config(1, 0.5)
+            });
+          }
+        },
+        computed: {
+          selectedButton(){
+            return this.buttons[this.selectedId];
+          }
+        },
+        mounted() {
+          this.selectButton(0);
+        }
+      })
+    </script>
+  </body>
+</html>

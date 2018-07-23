@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Transitions</title>
+    <style>
+      body {
+
+        background-color: lightcoral;
+      }
+
+      #app {
+
+        display: flex;
+      }
+      .btn {
+
+        padding: 10px;
+        width: 50px;
+        background-color: white;
+        text-align: center;
+      }
+      .btn--selected {
+
+        width: 100px;
+        transition: width 0.7s cubic-bezier(0.000, 1.650, 0.200, 0.850); 
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <div @click="selectButton" class="btn">i</div>
+        <div @click="selectButton" class="btn">i</div>
+        <div @click="selectButton" class="btn">i</div>
+        <div @click="selectButton" class="btn">i</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          selectButton(event){
+
+            event.target.classList.add('btn--selected');
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
