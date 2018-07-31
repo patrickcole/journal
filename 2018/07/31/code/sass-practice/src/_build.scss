@@ -1,0 +1,21 @@
+@mixin build-headers($sizes-map){
+
+  @each $size-id, $size-value in $sizes-map {
+
+    #{$size-id} { 
+      
+      font-size: #{$size-value};
+    }
+  }
+}
+
+@mixin build-buttons($sizes-map){
+
+  @each $btn-id, $btn-size in $sizes-map {
+
+    .btn-#{$btn-id}{
+      
+      font-size: #{$btn-size};
+    }
+  }
+}

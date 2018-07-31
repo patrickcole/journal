@@ -1,0 +1,15 @@
+@import "build";
+@import "utils";
+@import "config";
+
+@include build-buttons($config-button-sizes);
+@include build-headers($config-type-sizes);
+
+.depth--level1 { @include util-depth(1) }
+.depth--level2 { @include util-depth(2) }
+.depth--level3 { @include util-depth(3) }
+
+.page__container {
+
+  width: util-view-units(960px);
+}

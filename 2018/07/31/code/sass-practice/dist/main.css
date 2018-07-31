@@ -1,0 +1,32 @@
+.btn-primary {
+  font-size: 1.5rem; }
+
+.btn-secondary {
+  font-size: 1.125rem; }
+
+.btn-tertiary {
+  font-size: 1rem; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.5rem; }
+
+h3 {
+  font-size: 1.125rem; }
+
+h4 {
+  font-size: 1rem; }
+
+.depth--level1 {
+  opacity: 1; }
+
+.depth--level2 {
+  opacity: 0.7; }
+
+.depth--level3 {
+  opacity: 0.3; }
+
+.page__container {
+  width: 60rem; }
