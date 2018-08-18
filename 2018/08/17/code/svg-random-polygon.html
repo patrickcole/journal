@@ -3,30 +3,61 @@
   <head>
     <meta charset="utf-8">
     <title>SVG Random Polygon</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:800" rel="stylesheet">
     <style>
       
+      body {
+        
+        background-color: #00D3C8;
+      }
+
       #randomSvgShape {
 
         transition: 0.6s;
         will-change: transition;
       }
+
+      .brand {
+
+        width: 300px;
+        margin: 100px auto;
+        text-align: center;
+      }
+
+      .brand__secondary {
+
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+        color: #282828;
+        font-size: 1.5rem;
+        width: 300px;
+        margin-top: 0;
+      }
     </style>
   </head>
   <body>
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="300" height="264" viewBox="0, 0, 300, 264">
-      <path id="randomSvgShape" d="M0,0 L50,0 L50,50 L0,50 L0,0 z" fill="#282828"/>
-    </svg>
-    <p>The shape of the web is always changing&hellip;</p>
+
+    <div class="brand">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="brand__primary" x="0" y="0" width="300" height="264" viewBox="0, 0, 300, 264">
+        <defs>
+          <pattern id="diagonal-stripe-1" patternUnits="userSpaceOnUse" width="10" height="10">
+            <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J25vbmUnLz4KICA8cGF0aCBkPSdNMCA1TDUgMFpNNiA0TDQgNlpNLTEgMUwxIC0xWicgc3Ryb2tlPScjMjgyODI4JyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+" x="0" y="0" width="10" height="10"></image>
+          </pattern>
+        </defs>
+        <path style="fill: url(#diagonal-stripe-1) #282828" id="randomSvgShape" d="M99.493,29.251 L237.496,73.25 L267.5,126.25 L238.496,244.25 L99.493,223.249 L23.496,166.25 L99.493,29.251 z" fill="#282828"/>
+      </svg>
+      <p class="brand__secondary">The shape of the web is always changing&hellip;</p>
+    </div>
 
     <script>
 
       let bounds = [
-        { x1: 0, x2: 28, y1: 0, y2: 7 },
-        { x1: 85, x2: 100, y1: 0, y2: 10 },
-        { x1: 78, x2: 98, y1: 85, y2: 100 },
-        { x1: 48, x2: 58, y1: 77, y2: 98 },
-        { x1: 32, x2: 38, y1: 83, y2: 92 },
-        { x1: 0, x2: 10, y1: 85, y2: 100 }
+        { x1: 35.50, x2: 117.25, y1: 0, y2: 81.75 },
+        { x1: 194.25, x2: 260.50, y1: 22.25, y2: 88.50 },
+        { x1: 226.25, x2: 288.50, y1: 106.75, y2: 169 },
+        { x1: 204.75, x2: 267, y1: 200, y2: 261 },
+        { x1: 73.50, x2: 135.75, y1: 199, y2: 243 },
+        { x1: 0, x2: 62.25, y1: 119.50, y2: 181.75 }
       ];
       
       let shapePath = document.getElementById('randomSvgShape');
@@ -57,7 +88,10 @@
           }
         }
 
-        pathTemplate += `L${originTemplate} z`;
+        pathTemplate += `L${originTemplate} z `;
+        
+        // Add cutout shape:
+        pathTemplate += `M161.584,91.298 L119.248,91.298 L119.248,193.25 L147.616,193.25 L147.616,159.122 L161.584,159.122 Q173.68,159.122 182.248,154.73 Q190.816,150.338 195.136,142.706 Q199.456,135.074 199.456,125.426 Q199.456,109.874 189.736,100.586 Q180.016,91.298 161.584,91.298 z M158.416,114.194 Q170.8,114.194 170.8,125.426 Q170.8,136.802 158.416,136.802 L147.616,136.802 L147.616,114.194 L158.416,114.194 z`;
 
         shapePath.setAttribute('d', pathTemplate);
       }
