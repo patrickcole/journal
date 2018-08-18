@@ -7,7 +7,8 @@
       
       #randomSvgShape {
 
-        transition: 1.75s;
+        transition: 0.6s;
+        will-change: transition;
       }
     </style>
   </head>
@@ -15,6 +16,7 @@
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="300" height="264" viewBox="0, 0, 300, 264">
       <path id="randomSvgShape" d="M0,0 L50,0 L50,50 L0,50 L0,0 z" fill="#282828"/>
     </svg>
+    <p>The shape of the web is always changing&hellip;</p>
 
     <script>
 
@@ -22,31 +24,41 @@
         { x1: 0, x2: 28, y1: 0, y2: 7 },
         { x1: 85, x2: 100, y1: 0, y2: 10 },
         { x1: 78, x2: 98, y1: 85, y2: 100 },
+        { x1: 48, x2: 58, y1: 77, y2: 98 },
+        { x1: 32, x2: 38, y1: 83, y2: 92 },
         { x1: 0, x2: 10, y1: 85, y2: 100 }
       ];
-
-      let coor = [];
       
-
       let shapePath = document.getElementById('randomSvgShape');
+      randomize();
       
       requestInterval(function() {
         
         randomize();
-      }, 1000);
-      
+      }, 5000);
 
-      console.log( shapePath );
+     
 
       function randomize(){
 
-        for ( let coorIndex = 0; coorIndex < 4; coorIndex++ ){
+        let pathTemplate = ``;
+        let originTemplate = ``;
+        
+        for ( let coorIndex = 0; coorIndex < bounds.length; coorIndex++ ){
 
-          let thisPair = { x: randomInt(bounds[coorIndex].x1, bounds[coorIndex].x2), y: randomInt(bounds[coorIndex].y1, bounds[coorIndex].y2) };
-          coor[coorIndex] = thisPair;
+          let thisCoor = `${randomInt(bounds[coorIndex].x1, bounds[coorIndex].x2)},${randomInt(bounds[coorIndex].y1, bounds[coorIndex].y2)}`;
+          if ( coorIndex == 0 ){
+
+            originTemplate += thisCoor;
+            pathTemplate += `M${thisCoor} `;
+          } else {
+
+            pathTemplate += `L${thisCoor} `;
+          }
         }
 
-        let pathTemplate = `M${coor[0].x},${coor[0].y} L${coor[1].x},${coor[1].y}, L${coor[2].x},${coor[2].y}, L${coor[3].x},${coor[3].y}, L${coor[0].x},${coor[0].y} z`;
+        pathTemplate += `L${originTemplate} z`;
+
         shapePath.setAttribute('d', pathTemplate);
       }
 
@@ -55,6 +67,7 @@
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
 
+      // credit to Chris Coyier:
       function requestInterval(fn, delay) {
         var requestAnimFrame = (function () {
           return window.requestAnimationFrame || function (callback, element) {
