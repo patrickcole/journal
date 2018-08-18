@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SVG Random Polygon</title>
+  </head>
+  <body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="300" height="264" viewBox="0, 0, 300, 264">
+      <path id="randomSvgShape" d="M0,0 L50,0 L50,50 L0,50 L0,0 z" fill="#282828"/>
+    </svg>
+
+    <script>
+
+      let coor = [
+        { x: 0, y: 0 },
+        { x: 100, y: 0 },
+        { x: 100, y: 100 },
+        { x: 0, y: 100 }
+      ];
+
+      let shapePath = document.getElementById('randomSvgShape');
+
+      let pathTemplate = `M${coor[0].x},${coor[0].y} L${coor[1].x},${coor[1].y}, L${coor[2].x},${coor[2].y}, L${coor[3].x},${coor[3].y}, L${coor[0].x},${coor[0].y} z`;
+
+      setTimeout( () => {
+
+        shapePath.setAttribute('d', pathTemplate);
+      }, 1000);
+      
+
+      console.log( shapePath );
+
+    </script>
+  </body>
+</html>
