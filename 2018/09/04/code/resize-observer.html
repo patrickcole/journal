@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Resize Observer</title>
+    <style>
+      
+      article {
+
+        max-width: 960px;
+        margin: 0 auto;
+        background-color: steelblue;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <article id="example1">example1</article>
+    <script>
+      
+      const examplesObserver = new ResizeObserver( entries => {
+
+        entries.forEach( entry => {
+
+          console.log('width', entry.contentRect.width);
+          console.log('height', entry.contentRect.height);
+        });
+      });
+
+      const ex1 = document.querySelector('#example1');
+
+      examplesObserver.observe(ex1);
+    </script>
+  </body>
+</html>

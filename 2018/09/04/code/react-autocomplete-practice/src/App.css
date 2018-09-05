@@ -1,0 +1,47 @@
+* {
+
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
+}
+
+.stocks {
+
+  width: 100%;
+  padding: 10px;
+}
+
+.stocks__input {
+
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.stocks__autocomplete {
+
+  width: 100%;
+}
+
+.stocks__list {
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stocks__item {
+
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.stocks__item--hilite {
+  color: white;
+  background-color: #4095bf;
+}
