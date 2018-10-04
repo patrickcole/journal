@@ -1,0 +1,20 @@
+{
+  "name": "babel-node-sample",
+  "version": "1.0.0",
+  "description": "A quick sample application to get Babel 7 and Node working together.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/serverjs",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/server.js"
+  },
+  "author": "Patrick Cole",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "nodemon": "^1.18.4"
+  }
+}
