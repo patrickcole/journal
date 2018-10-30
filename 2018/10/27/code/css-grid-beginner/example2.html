@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CSS Grid Beginner - Example 2</title>
+    <style>
+      main {
+        display: grid;
+        grid-template-areas:
+          'x y y y y'
+          'x c c c w'
+          'x c c c w'
+          'x z z z z'
+        ;
+        grid-gap: 15px;
+      }
+
+      header { grid-area: y; background-color: greenyellow; }
+      article { grid-area: c; background-color: goldenrod; }
+      footer { grid-area: z; background-color: lightskyblue; }
+      .container__left { grid-area: x; background-color: lightcoral; }
+      .container__right { grid-area: w; background-color: plum; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>Header</header>
+      <aside class="container__left">Left</aside>
+      <article>Article</article>
+      <aside class="container__right">Right</aside>
+      <footer>Footer</footer>
+    </main>
+  </body>
+</html>

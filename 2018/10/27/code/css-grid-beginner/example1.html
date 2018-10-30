@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CSS Grid Beginner - Example 1</title>
+    <style>
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 15px;
+      }
+
+      main > * {
+        background-color: lightslategrey;
+      }
+
+      .large {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 5;
+      }
+
+      article {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(3, max-content);
+      }
+
+      article > * {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+      <div>D</div>
+      <div>E</div>
+      <div>F</div>
+      <div class="large">G</div>
+      <div>H</div>
+      <div>I</div>
+      <div>J</div>
+      <div>K</div>
+      <div>L</div>
+      <div>M</div>
+      <div>N</div>
+      <div>O</div>
+      <div>P</div>
+      <div>Q</div>
+    </main>
+    <article>
+      <div>hello there stranger</div>
+      <div>mid</div>
+      <div>right</div>
+    </article>
+  </body>
+</html>
