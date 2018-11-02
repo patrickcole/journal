@@ -10,3 +10,4 @@
 - [August](https://github.com/patrickcole/journal/tree/master/2018/08)
 - [September](https://github.com/patrickcole/journal/tree/master/2018/09)
 - [October](https://github.com/patrickcole/journal/tree/master/2018/10)
+- [November](https://github.com/patrickcole/journal/tree/master/2018/11)
